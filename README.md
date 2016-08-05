@@ -1,6 +1,6 @@
 # ado2epics
 
-ADO to EPICS half-lane bridge
+ADO to EPICS one-lane bridge
 
 ## Dependencies
 
