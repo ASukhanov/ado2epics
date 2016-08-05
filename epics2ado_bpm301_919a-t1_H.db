@@ -1,0 +1,814 @@
+# EPICS database is generated using "./ado2epics_db.sh bpm301.919a-t1.H" command
+# Manual mods: stringout on some records
+#}
+record(ai, "fecName")
+{
+    field(VAL,"0")
+}
+record(ai, "description")
+{
+    field(VAL,"0")
+}
+record(ai, "constructTime")
+{
+    field(VAL,"0")
+}
+record(ai, "version")
+{
+    field(VAL,"0")
+}
+record(ai, "className")
+{
+    field(VAL,"0")
+}
+record(ai, "commandBuffer")
+{
+    field(VAL,"0")
+    field(DESC,"ASCII list of the last n commands to thi")
+}
+record(ai, "commandBufferLength")
+{
+    field(VAL,"0")
+    field(DESC,"Number of commands stored in the command")
+}
+record(ai, "systemNameS")
+{
+    field(VAL,"0")
+    field(DESC,"Hold the ADO System Name")
+}
+record(ai, "planeNameM")
+{
+    field(VAL,"0")
+    field(DESC,"ADO Instance Number from Hardware memory")
+}
+record(ai, "firmwareVersionM")
+{
+    field(VAL,"0")
+    field(DESC,"Hard coded firmware version")
+}
+record(ai, "firmwareSubVersionM")
+{
+    field(VAL,"0")
+    field(DESC,"Hard coded firmware sub-version")
+}
+record(ai, "boardTypeM")
+{
+    field(VAL,"0")
+    field(DESC,"Hardware revision detected by firmware (")
+}
+record(ai, "ignoreStatusCheckS")
+{
+    field(VAL,"0")
+    field(DESC,"Writing a 1 here disables checks of stat")
+}
+record(stringout, "statusM")
+{
+    field(VAL,"0")
+    field(DESC,"BPM status information")
+}
+record(stringout, "interlockStatusM")
+{
+    field(VAL,"0")
+    field(DESC,"Interlock status information")
+}
+record(ai, "heartbeatM")
+{
+    field(VAL,"0")
+    field(DESC,"Counter the increments every 1000 ADO da")
+}
+record(ai, "rawATimestampM")
+{
+    field(VAL,"0")
+    field(DESC,"Raw A array timestamp in ADC counts")
+}
+record(ai, "rawBTimestampM")
+{
+    field(VAL,"0")
+    field(DESC,"Raw B array timestamp in ADC counts")
+}
+record(ai, "rtdlTimestampM")
+{
+    field(VAL,"0")
+    field(DESC,"Unix time from RTDL when the ADO trigger")
+}
+record(ai, "turnCountM")
+{
+    field(VAL,"0")
+    field(DESC,"Turns (since sync event when beamsync li")
+}
+record(ai, "rawAM")
+{
+    field(VAL,"0")
+    field(DESC,"Raw A array")
+}
+record(ai, "rawBM")
+{
+    field(VAL,"0")
+    field(DESC,"Raw A array")
+}
+record(ai, "rmsAM")
+{
+    field(VAL,"0")
+    field(DESC,"Most recent single turn rms for input A")
+}
+record(ai, "rmsBM")
+{
+    field(VAL,"0")
+    field(DESC,"Most recent single turn rms for input B")
+}
+record(ai, "accumAM")
+{
+    field(VAL,"0")
+    field(DESC,"High and low words of accum of squares f")
+}
+record(ai, "accumBM")
+{
+    field(VAL,"0")
+    field(DESC,"High and low words of accum of squares f")
+}
+record(ai, "accumAfloatM")
+{
+    field(VAL,"0")
+    field(DESC,"Accum of squares for A signal as float")
+}
+record(ai, "accumBfloatM")
+{
+    field(VAL,"0")
+    field(DESC,"Accum of squares for B signal as float")
+}
+record(ai, "positionM")
+{
+    field(VAL,"0")
+    field(DESC,"Most recent single turn position value")
+}
+record(ai, "avgPositionM")
+{
+    field(VAL,"0")
+    field(DESC,"Most recent average position")
+}
+record(ai, "positionCalcM")
+{
+    field(VAL,"0")
+    field(DESC,"Calculated position using Sum of squares")
+}
+record(ai, "tbtPositionM")
+{
+    field(VAL,"0")
+    field(DESC,"Raw position array")
+}
+record(ai, "positionArrayM")
+{
+    field(VAL,"0")
+    field(DESC,"Raw position array")
+}
+record(ai, "posPeakToPeakM")
+{
+    field(VAL,"0")
+    field(DESC,"Peak-to-peak position for update period")
+}
+record(ai, "positionArrayAvgM")
+{
+    field(VAL,"0")
+    field(DESC,"Average position based on positionArrayM")
+}
+record(ai, "positionArrayStdDevM")
+{
+    field(VAL,"0")
+    field(DESC,"Standard Deviation of RMS position based")
+}
+record(ai, "coherenceM")
+{
+    field(VAL,"0")
+    field(DESC,"coherence for each bunch")
+}
+record(ai, "bbbPositionM")
+{
+    field(VAL,"0")
+    field(DESC,"position for each bunch")
+}
+record(ai, "bbbStatusM")
+{
+    field(VAL,"0")
+    field(DESC,"status of position measurement for each ")
+}
+record(ai, "bbbBunchCountM")
+{
+    field(VAL,"0")
+    field(DESC,"number of detected bunches")
+}
+record(ai, "adcClkDelayAM")
+{
+    field(VAL,"0")
+    field(DESC,"ADC clock delay counter output for A Cha")
+}
+record(ai, "adcClkDelayBM")
+{
+    field(VAL,"0")
+    field(DESC,"ADC clock delay counter output for B Cha")
+}
+record(ai, "bpmOrientationCS")
+{
+    field(VAL,"0")
+    field(DESC,"BPM is mounted orthoganl or diagonal.  2")
+}
+record(ai, "fpgaResetA")
+{
+    field(VAL,"0")
+    field(DESC,"Reset FPGA")
+}
+record(ai, "triggerModeAS")
+{
+    field(VAL,"0")
+    field(DESC,"Trigger mode - Threshold A, Trig Cascade")
+}
+record(ai, "triggerModeBS")
+{
+    field(VAL,"0")
+    field(DESC,"Trigger mode - Threshold B, Trig Cascade")
+}
+record(ai, "triggerTypeS")
+{
+    field(VAL,"0")
+    field(DESC,"Trigger type - 'Per Turn' = 1 Trigger fo")
+}
+record(ai, "interlockEnableS")
+{
+    field(VAL,"0")
+    field(DESC,"Enable or Disable the interlock feature.")
+}
+record(ai, "interlockResetS")
+{
+    field(VAL,"0")
+    field(DESC,"Reset FPGA")
+}
+record(ai, "interlockIgnoreCntS")
+{
+    field(VAL,"0")
+    field(DESC,"Ignore this many consecutive interlocks ")
+}
+record(ai, "interlockHighLimitS")
+{
+    field(VAL,"0")
+    field(DESC,"Positive Position to interlock on.")
+}
+record(ai, "interlockLowLimitS")
+{
+    field(VAL,"0")
+    field(DESC,"Negative Position to interlock on.")
+}
+record(ai, "positionOffsetS")
+{
+    field(VAL,"0")
+    field(DESC,"Position Offset added to positionM and a")
+}
+record(ai, "offsetAS")
+{
+    field(VAL,"0")
+    field(DESC,"input A offset")
+}
+record(ai, "offsetBS")
+{
+    field(VAL,"0")
+    field(DESC,"input B offset")
+}
+record(ai, "calGainAS")
+{
+    field(VAL,"0")
+    field(DESC,"calibration gain factor (multiply) again")
+}
+record(ai, "calGainBS")
+{
+    field(VAL,"0")
+    field(DESC,"calibration gain factor (multiply) again")
+}
+record(ai, "coef1S")
+{
+    field(VAL,"0")
+    field(DESC,"coefficient 1 for position calculation, ")
+}
+record(ai, "coef3S")
+{
+    field(VAL,"0")
+    field(DESC,"coefficient 3 for position calculation, ")
+}
+record(ai, "thresholdS")
+{
+    field(VAL,"0")
+    field(DESC,"Threshold value for beam triggering")
+}
+record(ai, "nSamplesS")
+{
+    field(VAL,"0")
+    field(DESC,"Size of raw data for position computatio")
+}
+record(ai, "bunchSamplesS")
+{
+    field(VAL,"0")
+    field(DESC,"After threshold, number of samples to ta")
+}
+record(ai, "nSamplesHoldoffS")
+{
+    field(VAL,"0")
+    field(DESC,"Additional ADC samples before re-enablin")
+}
+record(ai, "samplesPerTurnS")
+{
+    field(VAL,"0")
+    field(DESC,"Number of ADC samples per turn")
+}
+record(ai, "cAvgDivideS")
+{
+    field(VAL,"0")
+    field(DESC,"Continuous average divide factor (2^cAvg")
+}
+record(ai, "nthSampleS")
+{
+    field(VAL,"0")
+    field(DESC,"ADC Accumulator Takes Every nth Sample")
+}
+record(ai, "adcDataClkDelayAS")
+{
+    field(VAL,"0")
+    field(DESC,"ADC Clock Delay Counter Setting for A Ch")
+}
+record(ai, "adcDataClkDelayBS")
+{
+    field(VAL,"0")
+    field(DESC,"ADC Clock Delay Counter Setting for B Ch")
+}
+record(ai, "positionCalcModeS")
+{
+    field(VAL,"0")
+    field(DESC,"When 'Single' position based on a single")
+}
+record(ai, "bunchSelectS")
+{
+    field(VAL,"0")
+    field(DESC,"Selected Bunch for Position Output (Avg ")
+}
+record(ai, "bunchAvgSkipS")
+{
+    field(VAL,"0")
+    field(DESC,"Number of bunches to skip for average ca")
+}
+record(ai, "bunchAvgLimitS")
+{
+    field(VAL,"0")
+    field(DESC,"Number of bunches to use for average cal")
+}
+record(ai, "externalTrigDelayS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay in 5ns steps for external triggers")
+}
+record(ai, "eventTrigSourceS")
+{
+    field(VAL,"0")
+    field(DESC,"Which Event Source to use when triggerMo")
+}
+record(ai, "adcClkSourceS")
+{
+    field(VAL,"0")
+    field(DESC,"Select Clocking mode for ADCs")
+}
+record(ai, "adcClkRefS")
+{
+    field(VAL,"0")
+    field(DESC,"Select Reference clock source for ADC MM")
+}
+record(ai, "adcClkRefDivideS")
+{
+    field(VAL,"0")
+    field(DESC,"D Divider value for ADC MMCM Refernce Cl")
+}
+record(ai, "adcClkRefMultS")
+{
+    field(VAL,"0")
+    field(DESC,"M Multiplier value for ADC MMCM Refernce")
+}
+record(ai, "adcPllVcoFreqM")
+{
+    field(VAL,"0")
+    field(DESC,"VCO Freq = 200MHz  (or 28MHz) / adcClkRe")
+}
+record(ai, "adcClkOutDivideS")
+{
+    field(VAL,"0")
+    field(DESC,"C0/C1 Divider value for ADC MMCM Output ")
+}
+record(ai, "adcClkFreqM")
+{
+    field(VAL,"0")
+    field(DESC,"ADC Clock Freq = VCO / adcClkOutDivide.")
+}
+record(ai, "adcClkReconfigA")
+{
+    field(VAL,"0")
+    field(DESC,"Initiate ADC MMCM DRP Reconfig")
+}
+record(ai, "adcClkPhaseAS")
+{
+    field(VAL,"0")
+    field(DESC,"Phase Shift ADC A Clk in 11ps Increments")
+}
+record(ai, "adcClkPhaseBS")
+{
+    field(VAL,"0")
+    field(DESC,"Phase Shift ADC B Clk in 11ps Increments")
+}
+record(ai, "extPllClkRefS")
+{
+    field(VAL,"0")
+    field(DESC,"Select Reference clock source for extPll")
+}
+record(ai, "extPllClkRefDivideS")
+{
+    field(VAL,"0")
+    field(DESC,"D Divider value for extPll Refernce Cloc")
+}
+record(ai, "extPllClkRefMultS")
+{
+    field(VAL,"0")
+    field(DESC,"M Multiplier value for extPll Refernce C")
+}
+record(ai, "extPllVcoFreqM")
+{
+    field(VAL,"0")
+    field(DESC,"VCO Freq = RefClk: 27MHz (or 28MHz BSC) ")
+}
+record(ai, "extPllClkOutDivideS")
+{
+    field(VAL,"0")
+    field(DESC,"Divider value for extPll  Output Clock. ")
+}
+record(ai, "extPllClkFreqM")
+{
+    field(VAL,"0")
+    field(DESC,"extPll Clock Freq = VCO / extPllClkOutDi")
+}
+record(ai, "extPllClkReconfigA")
+{
+    field(VAL,"0")
+    field(DESC,"Initiate extPll Reconfig")
+}
+record(ai, "extPllClkPhaseAS")
+{
+    field(VAL,"0")
+    field(DESC,"Phase Shift of external PLL outputs in 1")
+}
+record(ai, "extPllClkPhaseBS")
+{
+    field(VAL,"0")
+    field(DESC,"Phase Shift of external PLL outputs in 1")
+}
+record(ai, "extPllClkPhaseCS")
+{
+    field(VAL,"0")
+    field(DESC,"Phase Shift of external PLL outputs in 1")
+}
+record(ai, "extPllClkPhaseDS")
+{
+    field(VAL,"0")
+    field(DESC,"Phase Shift of external PLL outputs in 1")
+}
+record(ai, "attenA1S")
+{
+    field(VAL,"0")
+    field(DESC,"Attenuation Setting for Channel A Stage ")
+}
+record(ai, "attenA2S")
+{
+    field(VAL,"0")
+    field(DESC,"Attenuation Setting for Channel A Stage ")
+}
+record(ai, "attenB1S")
+{
+    field(VAL,"0")
+    field(DESC,"Attenuation Setting for Channel B Stage ")
+}
+record(ai, "attenB2S")
+{
+    field(VAL,"0")
+    field(DESC,"Attenuation Setting for Channel B Stage ")
+}
+record(ai, "avgTimestampM")
+{
+    field(VAL,"0")
+    field(DESC,"Unix time and turn counter of the averag")
+}
+record(ai, "avgOrbPositionM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position (same as po")
+}
+record(ai, "avgOrbStatM")
+{
+    field(VAL,"0")
+    field(DESC,"Position measurement status at the aveor")
+}
+record(ai, "avgOrbACorrM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position raw RMS val")
+}
+record(ai, "avgOrbBCorrM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position raw RMS val")
+}
+record(ai, "avgOrbVarianceM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position variance")
+}
+record(ai, "tbtTimestampM")
+{
+    field(VAL,"0")
+    field(DESC,"Unix time and turn counter of the turn-b")
+}
+record(ai, "tbtOrbPositionM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position (same as po")
+}
+record(ai, "tbtOrbStatM")
+{
+    field(VAL,"0")
+    field(DESC,"Position measurement status at the turn-")
+}
+record(ai, "tbtOrbACorrM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position raw RMS val")
+}
+record(ai, "tbtOrbBCorrM")
+{
+    field(VAL,"0")
+    field(DESC,"Continuious average position raw RMS val")
+}
+record(ai, "extInput0ModeCS")
+{
+    field(VAL,"0")
+    field(DESC,"When 'Interlock' is set, input level 1 r")
+}
+record(ai, "extInput1ModeCS")
+{
+    field(VAL,"0")
+    field(DESC,"When 'Interlock' is set, input level 1 r")
+}
+record(ai, "extOutput0ModeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Set mode of external IO output port 0")
+}
+record(ai, "extOutput1ModeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Set mode of external IO output port 1")
+}
+record(ai, "extOutput2ModeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Set mode of external IO output port 2")
+}
+record(ai, "extOutput3ModeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Set mode of external IO output port 3")
+}
+record(ai, "eventTrigBunchLimitCS")
+{
+    field(VAL,"0")
+    field(DESC,"Number of bunches to trigger on when usi")
+}
+record(ai, "linkBS1Delay1CourseCS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 1 -")
+}
+record(ai, "linkBS1Delay1FineCS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 1 -")
+}
+record(ai, "linkBS2Delay1CourseCS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 2 -")
+}
+record(ai, "linkBS2Delay1FineCS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 2 -")
+}
+record(ai, "linkEV1Delay1CS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Event Link Ch. 1")
+}
+record(ai, "linkBS1TestCodeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Test Code counter for Beam Sync Link Ch.")
+}
+record(ai, "linkBS2TestCodeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Test code counter for Beam Sync Link Ch.")
+}
+record(ai, "linkEV1TestCodeCS")
+{
+    field(VAL,"0")
+    field(DESC,"Test code counter for Event Link Ch. 1")
+}
+record(ai, "ethernetConfigCS")
+{
+    field(VAL,"0")
+    field(DESC,"Control register for PL side Ethernet Li")
+}
+record(ai, "miscIOInBitsM")
+{
+    field(VAL,"0")
+    field(DESC,"Misc Input ports 0-3 status.")
+}
+record(ai, "linkStatusM")
+{
+    field(VAL,"0")
+    field(DESC,"P2 Link status information")
+}
+record(ai, "ethernetStatusM")
+{
+    field(VAL,"0")
+    field(DESC,"Ethernet (PL) Link status information")
+}
+record(ai, "linkBS1ErrorCntM")
+{
+    field(VAL,"0")
+    field(DESC,"Frame error count for Beam Sync Link Ch.")
+}
+record(ai, "linkBS2ErrorCntM")
+{
+    field(VAL,"0")
+    field(DESC,"Frame error count for Beam Sync Link Ch.")
+}
+record(ai, "linkEV1ErrorCntM")
+{
+    field(VAL,"0")
+    field(DESC,"Frame error count for Event Link Ch.1 on")
+}
+record(ai, "linkBS1TestCntM")
+{
+    field(VAL,"0")
+    field(DESC,"Test counter for Beam Sync Link Ch.1 on ")
+}
+record(ai, "linkBS2TestCntM")
+{
+    field(VAL,"0")
+    field(DESC,"Test counter for Beam Sync Link Ch.2 on ")
+}
+record(ai, "linkEV1TestCntM")
+{
+    field(VAL,"0")
+    field(DESC,"Test counter for Event Link Ch.1 on V208")
+}
+record(ai, "fpgaTemperatureM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA Die temperature")
+}
+record(ai, "fpgaVccIntM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA Vcc Voltage (1.0V Nominal)")
+}
+record(ai, "fpgaVccPIntM")
+{
+    field(VAL,"0")
+    field(DESC,"ARM Vcc Voltage (1.0V Nominal)")
+}
+record(ai, "fpgaVccAuxM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA Vcc Aux Voltage (1.8V Nominal)")
+}
+record(ai, "fpgaVccPAuxM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA Vcc Aux Voltage (1.8V Nominal)")
+}
+record(ai, "fpgaVccBramM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA BRAM Voltage (1.0V Nominal)")
+}
+record(ai, "fpgaVccDDRM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA Vcco DDR Voltage (1.5V Nominal)")
+}
+record(ai, "fpgaAlarmM")
+{
+    field(VAL,"0")
+    field(DESC,"FPGA Alarm Condition")
+}
+record(ai, "goertzelFreqS")
+{
+    field(VAL,"0")
+    field(DESC,"Frequency component at 704 MHz for x pla")
+}
+record(ai, "goertzelFreqM")
+{
+    field(VAL,"0")
+    field(DESC,"Frequency used for goertzel position")
+}
+record(ai, "goertzelPosM")
+{
+    field(VAL,"0")
+    field(DESC,"Frequency component at 704 MHz for x pla")
+}
+record(ai, "goertzelAmpAM")
+{
+    field(VAL,"0")
+    field(DESC,"Frequency component at 704 MHz for x pla")
+}
+record(ai, "goertzelAmpBM")
+{
+    field(VAL,"0")
+    field(DESC,"Frequency component at 704 MHz for x pla")
+}
+record(ai, "goertzelKM")
+{
+    field(VAL,"0")
+    field(DESC,"k value of goertzel")
+}
+record(ai, "channelCalM")
+{
+    field(VAL,"0")
+    field(DESC,"k value of goertzel")
+}
+record(ai, "fftAM")
+{
+    field(VAL,"0")
+    field(DESC,"FFT of raw ADC data for A channel")
+}
+record(ai, "fftBM")
+{
+    field(VAL,"0")
+    field(DESC,"FFT of raw ADC data for B channel")
+}
+record(ai, "fftRatioM")
+{
+    field(VAL,"0")
+    field(DESC,"Ratio of the two FFT channels")
+}
+record(ai, "spare1S")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 1")
+}
+record(ai, "spare2S")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 2")
+}
+record(ai, "spare3S")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 3")
+}
+record(ai, "spare1M")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 1")
+}
+record(ai, "spare2M")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 2")
+}
+record(ai, "spare3M")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 3")
+}
+record(ai, "spare1CS")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 1 (Common register to both instanc")
+}
+record(ai, "spare2CS")
+{
+    field(VAL,"0")
+    field(DESC,"Spare 2 (Common register to both instanc")
+}
+record(ai, "spare1CM")
+{
+    field(VAL,"0")
+    field(DESC,"Common Spare 1")
+}
+record(ai, "spare2CM")
+{
+    field(VAL,"0")
+    field(DESC,"Common Spare 2")
+}
+# Generated 163 EPICS records

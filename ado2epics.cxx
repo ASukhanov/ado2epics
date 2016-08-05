@@ -47,7 +47,7 @@ char *gpv2ado_map_filename = NULL;
 //'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 #include <stdlib.h>
 
-#define MAXRECORDS 100
+#define MAXRECORDS 300
 #define MINCOLS 3 // expected minimum number of columns
 #define MAXTOKENS  MAXRECORDS*MINCOLS
 #define MAXTOKENSIZE 100

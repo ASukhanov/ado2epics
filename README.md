@@ -40,6 +40,14 @@ Example of running softIOC with the simple.db:
 
 :softIoc -d simple.db
 
+## TODO
+
+-ado2epics_db.sh: 
+
+ADO string should go to EPICS stringout.
+
+Handle arrays
+
 ## Compilation
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
