@@ -35,10 +35,10 @@ Example of running softIOC with the simple.db:
 :softIoc -d simple.db
 
 ## Compilation
- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
- It was not straightforward how to setup the cmake to build with the EPICS.
- To setup the building process in Eclipse platform was much more easy.
- To build C/C++ programs the CDT plugin should be installed in Eclipse.
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+It was not straightforward how to setup the cmake to build with the EPICS.
+To setup the building process in Eclipse platform was much more easy.
+To build C/C++ programs the CDT plugin should be installed in Eclipse.
  
 - Set environment variables for compiling ADO components in Eclipse:
 
@@ -47,21 +47,28 @@ setenv CMAKE_COMPILE "/vobs/libs/makefiles/g++447_64 -m32 -Wall -I/usr/include  
 setenv CMAKE_LIBS "-ladoIf -lsetHist -ldbtools -lcns -lifHandlerLib -lsvcHandlerLib -lado -lnotifLib -lcommToolsLib -lddf -ldb++2 -lMsgLog -lutils -lAsync -lbasics -lGenData -lcdevData -lUIDummy -lsmtp -lrhicError -lsybcs -lsybblk -lsybct -lsybcomn -lsybintl -lsybtcl -lXt -lX11 -lSM -lICE -lm -ldl -lrt -lpthread"
 
 setenv CMAKE_LINK "/vobs/libs/makefiles/g++447_64 -m32 -Wall -L/vobs/store/X86/lib -Xlinker -rpath -Xlinker /usr/local/share/sybase150/OCS-15_0/lib -L/usr/local/share/sybase150/OCS-15_0/lib  -L/usr/local/X11R6/lib -L/usr/X11R6/lib -L/usr/lib -L/usr/local/lib -L/usr/local/share -L/usr/local/share/lib -rdynamic"
- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 :cleartool setview YOUR_VIEW
+
 :git clone https://github.com/ASukhanov/ado2epics
 
- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
                             In Eclipse 
-:eclipse&
+
+eclipse&
+
 open workspace of your choice
+
 select: File/Import/General/Existing Project into Workspace
+
 Select root directory: enter the directory, you cloned from github
 
 The project ado2epics should appear in the 'C/C++ Projects' pane
 Right click on ado2epics/Build Project
 The program should be built in Release or Debug subdirectory.
+
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 
