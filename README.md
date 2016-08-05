@@ -1,6 +1,4 @@
-# ado2epics
-
-ADO to EPICS one-lane bridge
+# ado2epics: ADO to EPICS bridge lane: monitor EPICS PVs and cnange corresponding ADO variables
 
 ## Dependencies
 
