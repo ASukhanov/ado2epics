@@ -1,6 +1,6 @@
 # ado2epics
 
-ADO to EPICS bridge lane: monitor EPICS PVs and cnange corresponding ADO variables
+ADO to EPICS bridge lane: monitor ADO variable and change corresponding EPICS PV.
 
 ## Dependencies
 
