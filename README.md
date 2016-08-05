@@ -14,28 +14,35 @@ ADO to EPICS half-lane bridge
 ado2epics program  monitors the ADO variables, defined in the supplied map file and modifies the corresponding EPICS PVs.
 
 Example for simple.test ADO, assuming the softIOC is already running with proper db (see below):
-:ado2epics -a simple.test -m epics2ado_simple.csv -v1
+
+-ado2epics -a simple.test -m epics2ado_simple.csv -v1
 
 To monitor the EPICS PV 'sinM', served by ado2epics:
+
 :camonitor sinM
 sinM                           2016-08-05 11:40:00.730355 -0.809017  
 sinM                           2016-08-05 11:40:01.231654 -0.819152  
 ...
 
 The script ado2epics_map.sh generates map file from live ADO. 
+
 Example for simple.test ADO:
+
 :./ado2epics_map.sh >! epics2ado_simple.csv
 
 The script ado2epics_db.sh generates EPICS database from live ADO. 
 The generated map is csv file and it defines all ADO variables to be exported to the EPICS PVs with the same name.
 Example for simple.test ADO:
+
 :./ado2epics_db.sh simple.test >! simple.db
 
 Example of running softIOC with the simple.db:
+
 :softIoc -d simple.db
 
 ## Compilation
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 It was not straightforward how to setup the cmake to build with the EPICS.
 To setup the building process in Eclipse platform was much more easy.
 To build C/C++ programs the CDT plugin should be installed in Eclipse.
@@ -55,6 +62,7 @@ setenv CMAKE_LINK "/vobs/libs/makefiles/g++447_64 -m32 -Wall -L/vobs/store/X86/l
 :git clone https://github.com/ASukhanov/ado2epics
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
                             In Eclipse 
 
 eclipse&
