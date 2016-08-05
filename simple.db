@@ -1,0 +1,263 @@
+# EPICS database is generated using "ado2epics_db.sh simple.test" command
+#}
+record(ai, "fecName")
+{
+    field(VAL,"0")
+}
+record(ai, "description")
+{
+    field(VAL,"0")
+}
+record(ai, "constructTime")
+{
+    field(VAL,"0")
+}
+record(ai, "version")
+{
+    field(VAL,"0")
+}
+record(ai, "className")
+{
+    field(VAL,"0")
+}
+record(ai, "commandBuffer")
+{
+    field(VAL,"0")
+    field(DESC,"ASCII list of the last n commands to thi")
+}
+record(ai, "commandBufferLength")
+{
+    field(VAL,"0")
+    field(DESC,"Number of commands stored in the command")
+}
+record(ai, "testC")
+{
+    field(VAL,"0")
+    field(DESC,"This is a configuration parameter")
+}
+record(ai, "commandC")
+{
+    field(VAL,"0")
+    field(DESC,"This is a command parameter")
+}
+record(ai, "menuS")
+{
+    field(VAL,"0")
+    field(DESC,"menu setting")
+}
+record(ai, "charS")
+{
+    field(VAL,"0")
+    field(DESC,"char setting")
+}
+record(ai, "ucharS")
+{
+    field(VAL,"0")
+    field(DESC,"uchar setting")
+}
+record(ai, "shortS")
+{
+    field(VAL,"0")
+    field(DESC,"short int setting")
+}
+record(ai, "ushortS")
+{
+    field(VAL,"0")
+    field(DESC,"unsigned short int setting")
+}
+record(ai, "intS")
+{
+    field(VAL,"0")
+    field(DESC,"int setting")
+}
+record(ai, "uintS")
+{
+    field(VAL,"0")
+    field(DESC,"unsigned int setting")
+}
+record(ai, "longS")
+{
+    field(VAL,"0")
+    field(DESC,"long int setting")
+}
+record(ai, "ulongS")
+{
+    field(VAL,"0")
+    field(DESC,"unsigned long int setting")
+}
+record(ai, "floatS")
+{
+    field(VAL,"0")
+    field(DESC,"single float setting")
+}
+record(ai, "doubleS")
+{
+    field(VAL,"0")
+    field(DESC,"double float setting")
+}
+record(ai, "slowS")
+{
+    field(VAL,"0")
+    field(DESC,"like longS, except set takes 12 sec to c")
+}
+record(ai, "shortWatchM")
+{
+    field(VAL,"0")
+    field(DESC,"this parameter is used for monitoring")
+}
+record(ai, "ushortWatchM")
+{
+    field(VAL,"0")
+    field(DESC,"this parameter is used for monitoring")
+}
+record(ai, "ushortWatchStringM")
+{
+    field(VAL,"0")
+    field(DESC,"A string to show the status of the power")
+}
+record(ai, "stringInS")
+{
+    field(VAL,"0")
+    field(DESC,"string setting")
+}
+record(ai, "stringMonitorM")
+{
+    field(VAL,"0")
+    field(DESC,"this parameter is used for monitoring")
+}
+record(ai, "stringS")
+{
+    field(VAL,"0")
+    field(DESC,"string setting")
+}
+record(ai, "charArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"char array setting")
+}
+record(ai, "ucharArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"unsigned char array setting")
+}
+record(ai, "shortArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"short array setting")
+}
+record(ai, "ushortArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"unsigned short array setting")
+}
+record(ai, "longArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"long array setting")
+}
+record(ai, "ulongArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"unsigned long array setting")
+}
+record(ai, "floatArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"float array setting")
+}
+record(ai, "doubleArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"double array setting")
+}
+record(ai, "menuM")
+{
+    field(VAL,"0")
+    field(DESC,"menu measurement")
+}
+record(ai, "intM")
+{
+    field(VAL,"0")
+    field(DESC,"int measurement")
+}
+record(ai, "longM")
+{
+    field(VAL,"0")
+    field(DESC,"long int measurement")
+}
+record(ai, "doubleM")
+{
+    field(VAL,"0")
+    field(DESC,"double float measurement")
+}
+record(ai, "longArrayM")
+{
+    field(VAL,"0")
+    field(DESC,"long array measurement")
+}
+record(ai, "varArrayS")
+{
+    field(VAL,"0")
+    field(DESC,"long variable array measurement")
+}
+record(ai, "timerIntervalS")
+{
+    field(VAL,"0")
+    field(DESC,"num of msec between timer events")
+}
+record(ai, "alarmEnableS")
+{
+    field(VAL,"0")
+    field(DESC,"Allow alarms to be sent when sin < 0")
+}
+record(ai, "timerEnableS")
+{
+    field(VAL,"0")
+    field(DESC,"Is the timer enabled")
+}
+record(ai, "degM")
+{
+    field(VAL,"0")
+    field(DESC,"async degree measurement")
+}
+record(ai, "sinM")
+{
+    field(VAL,"0")
+    field(DESC,"async sine wave measurement")
+}
+record(ai, "unixTimeM")
+{
+    field(VAL,"0")
+    field(DESC,"unix time format is set so pet will disp")
+}
+record(ai, "alarmModeS")
+{
+    field(VAL,"0")
+    field(DESC,"Alarm Mode")
+}
+record(ai, "alarmModeLevelS")
+{
+    field(VAL,"0")
+    field(DESC,"Alarm level of alarmModeS parameter")
+}
+record(ai, "activePpmUsers")
+{
+    field(VAL,"0")
+    field(DESC,"List of active PPM users during the last")
+}
+record(ai, "killManager")
+{
+    field(VAL,"0")
+    field(DESC,"pres this button to exit the manager")
+}
+record(ai, "hexAddrS")
+{
+    field(VAL,"0")
+    field(DESC,"address pulldown shows hex, value on pet")
+}
+record(ai, "testS")
+{
+    field(VAL,"0")
+    field(DESC,"address pulldown shows hex, value on pet")
+}
+# Generated 53 EPICS records
