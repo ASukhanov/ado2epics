@@ -53,7 +53,14 @@ process_cmd()
        # close previous record and start new one
        ((NUMBER_OF_RECORDS++))
        VARIABLE=${WORDS[0]}
-       printf "}\nrecord(ai, \"%s\")\n{\n" $VARIABLE
+       #
+       # the first record is 'value' (is that always correct?), set the record type according to property type
+       RECTYPE="ai" # default record type is most generic: analog input
+       if [ ${WORDS[2]} == "StringType" ]; then RECTYPE="stringout"; fi
+       #
+       # TODO: handle other types
+       #
+       printf "}\nrecord($RECTYPE, \"%s\")\n{\n" $VARIABLE
      fi
      if [ ${WORDS[1]} == "desc" ]; then
        printf "    field(DESC,"

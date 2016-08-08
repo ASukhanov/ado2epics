@@ -4,6 +4,7 @@
 // Version v02 2016-07-13 by &RA. Good. REMOVE_USELESS, DONOT_CAGET, gverb, one argument, gpv2ado_map from file
 // Version v03 2016-07-15 by &RA. Good. Major cleanup. getopts, parse_epics2ado_csvmap
 // Version v05 2016-07-15 by &RA. Good. extern "C" int gVerb
+// Version v06 2016-08-08 by &RA. Call  adoChanged() on initial property setting
 
 #include <iostream>
 #include <iomanip>
@@ -479,6 +480,9 @@ AdoIf *adoIfArray[ MAXADOIFS ];
   if(gVerb&VERB_DEBUG) cout<<"numProp="<<numProp<<endl;
   char* paramName="";
   int nPropsRegistered = 0;
+  Value val(0.0);
+  char *initial_value;
+  int stat;
   for (ip=0; ip<numProp; ip++)
   {
 	  paramName = gpv2ado_map[ip*gncols+EPICS2ADO_COLUMN_ADO];
@@ -500,8 +504,19 @@ AdoIf *adoIfArray[ MAXADOIFS ];
 	  if( retval ){
 		  cout << "Error requesting async data for property " << paramName
 				  << ": " << RhicErrorNumToErrorStr(retval) << endl;
+		  continue;
 	  }
-	  else nPropsRegistered++;
+	  //
+	  nPropsRegistered++;
+	  stat = adoIfArray[0]->Get(paramName,&val);
+	  if(stat!=0) { // check the status
+	      cout << "ERROR getting initial value for property " << paramName
+				  << ": " << RhicErrorNumToErrorStr(retval) << endl;
+		  continue;
+	  }
+	  initial_value = val.StringVal(' ');
+	  if(gVerb&VERB_DEBUG) cout <<"Initial setting of "<<paramName<<" = "<<initial_value<<endl;
+	  adoChanged(adoIfArray[0]->AdoName(), paramName, initial_value);
   }
   if(nPropsRegistered==0) {cout<<"nPropsRegistered=0\n";exit(27);}
   if(gVerb&VERB_DEBUG) cout<<"nPropsRegistered="<<nPropsRegistered<<endl;

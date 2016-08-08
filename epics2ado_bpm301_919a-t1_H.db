@@ -1,11 +1,10 @@
 # EPICS database is generated using "./ado2epics_db.sh bpm301.919a-t1.H" command
-# Manual mods: stringout on some records
 #}
-record(ai, "fecName")
+record(stringout, "fecName")
 {
     field(VAL,"0")
 }
-record(ai, "description")
+record(stringout, "description")
 {
     field(VAL,"0")
 }
@@ -13,15 +12,15 @@ record(ai, "constructTime")
 {
     field(VAL,"0")
 }
-record(ai, "version")
+record(stringout, "version")
 {
     field(VAL,"0")
 }
-record(ai, "className")
+record(stringout, "className")
 {
     field(VAL,"0")
 }
-record(ai, "commandBuffer")
+record(stringout, "commandBuffer")
 {
     field(VAL,"0")
     field(DESC,"ASCII list of the last n commands to thi")
@@ -31,7 +30,7 @@ record(ai, "commandBufferLength")
     field(VAL,"0")
     field(DESC,"Number of commands stored in the command")
 }
-record(ai, "systemNameS")
+record(stringout, "systemNameS")
 {
     field(VAL,"0")
     field(DESC,"Hold the ADO System Name")
@@ -90,6 +89,11 @@ record(ai, "rtdlTimestampM")
 {
     field(VAL,"0")
     field(DESC,"Unix time from RTDL when the ADO trigger")
+}
+record(ai, "rtdlAdoTimestampM")
+{
+    field(VAL,"0")
+    field(DESC,"Unix time from RTDL when the ADO reads t")
 }
 record(ai, "turnCountM")
 {
@@ -206,37 +210,42 @@ record(ai, "adcClkDelayBM")
     field(VAL,"0")
     field(DESC,"ADC clock delay counter output for B Cha")
 }
-record(ai, "bpmOrientationCS")
+record(stringout, "adoDataCaptureModeS")
+{
+    field(VAL,"0")
+    field(DESC,"Which ADO instance triggers data capture")
+}
+record(stringout, "bpmOrientationCS")
 {
     field(VAL,"0")
     field(DESC,"BPM is mounted orthoganl or diagonal.  2")
 }
-record(ai, "fpgaResetA")
+record(stringout, "fpgaResetA")
 {
     field(VAL,"0")
     field(DESC,"Reset FPGA")
 }
-record(ai, "triggerModeAS")
+record(stringout, "triggerModeAS")
 {
     field(VAL,"0")
     field(DESC,"Trigger mode - Threshold A, Trig Cascade")
 }
-record(ai, "triggerModeBS")
+record(stringout, "triggerModeBS")
 {
     field(VAL,"0")
     field(DESC,"Trigger mode - Threshold B, Trig Cascade")
 }
-record(ai, "triggerTypeS")
+record(stringout, "triggerTypeS")
 {
     field(VAL,"0")
     field(DESC,"Trigger type - 'Per Turn' = 1 Trigger fo")
 }
-record(ai, "interlockEnableS")
+record(stringout, "interlockEnableS")
 {
     field(VAL,"0")
     field(DESC,"Enable or Disable the interlock feature.")
 }
-record(ai, "interlockResetS")
+record(stringout, "interlockResetS")
 {
     field(VAL,"0")
     field(DESC,"Reset FPGA")
@@ -260,6 +269,36 @@ record(ai, "positionOffsetS")
 {
     field(VAL,"0")
     field(DESC,"Position Offset added to positionM and a")
+}
+record(ai, "switchNormalOffsetS")
+{
+    field(VAL,"0")
+    field(DESC,"Offset is applied to positonOffsetS when")
+}
+record(ai, "switchReverseOffsetS")
+{
+    field(VAL,"0")
+    field(DESC,"Offset is applied to positonOffsetS when")
+}
+record(stringout, "calSwitchControlS")
+{
+    field(VAL,"0")
+    field(DESC,"Control output for external RF switch (s")
+}
+record(ai, "calSwitchSlowIntervalS")
+{
+    field(VAL,"0")
+    field(DESC,"Number of seconds between throwing calib")
+}
+record(stringout, "calSwitchFastModeS")
+{
+    field(VAL,"0")
+    field(DESC,"Allow this instance to control switch (M")
+}
+record(ai, "calSwitchFastIntervalS")
+{
+    field(VAL,"0")
+    field(DESC,"Number of turns between throwing calibra")
 }
 record(ai, "offsetAS")
 {
@@ -336,7 +375,7 @@ record(ai, "adcDataClkDelayBS")
     field(VAL,"0")
     field(DESC,"ADC Clock Delay Counter Setting for B Ch")
 }
-record(ai, "positionCalcModeS")
+record(stringout, "positionCalcModeS")
 {
     field(VAL,"0")
     field(DESC,"When 'Single' position based on a single")
@@ -361,17 +400,17 @@ record(ai, "externalTrigDelayS")
     field(VAL,"0")
     field(DESC,"Delay in 5ns steps for external triggers")
 }
-record(ai, "eventTrigSourceS")
+record(stringout, "eventTrigSourceS")
 {
     field(VAL,"0")
     field(DESC,"Which Event Source to use when triggerMo")
 }
-record(ai, "adcClkSourceS")
+record(stringout, "adcClkSourceS")
 {
     field(VAL,"0")
     field(DESC,"Select Clocking mode for ADCs")
 }
-record(ai, "adcClkRefS")
+record(stringout, "adcClkRefS")
 {
     field(VAL,"0")
     field(DESC,"Select Reference clock source for ADC MM")
@@ -401,7 +440,7 @@ record(ai, "adcClkFreqM")
     field(VAL,"0")
     field(DESC,"ADC Clock Freq = VCO / adcClkOutDivide.")
 }
-record(ai, "adcClkReconfigA")
+record(stringout, "adcClkReconfigA")
 {
     field(VAL,"0")
     field(DESC,"Initiate ADC MMCM DRP Reconfig")
@@ -416,10 +455,25 @@ record(ai, "adcClkPhaseBS")
     field(VAL,"0")
     field(DESC,"Phase Shift ADC B Clk in 11ps Increments")
 }
-record(ai, "extPllClkRefS")
+record(stringout, "extPllToFPGAClkRateS")
+{
+    field(VAL,"0")
+    field(DESC,"Select Reference clock to FPGA from exte")
+}
+record(stringout, "extPllClkRefS")
 {
     field(VAL,"0")
     field(DESC,"Select Reference clock source for extPll")
+}
+record(ai, "extPllIcpS")
+{
+    field(VAL,"0")
+    field(DESC,"Charge pump current in 600uA steps from ")
+}
+record(ai, "extPllClkRefFreqS")
+{
+    field(VAL,"0")
+    field(DESC,"Frequency of PLL reference clock in MHz")
 }
 record(ai, "extPllClkRefDivideS")
 {
@@ -446,10 +500,30 @@ record(ai, "extPllClkFreqM")
     field(VAL,"0")
     field(DESC,"extPll Clock Freq = VCO / extPllClkOutDi")
 }
-record(ai, "extPllClkReconfigA")
+record(stringout, "extPllClkReconfigA")
 {
     field(VAL,"0")
     field(DESC,"Initiate extPll Reconfig")
+}
+record(ai, "extPllReadAddrS")
+{
+    field(VAL,"0")
+    field(DESC,"For testing, register address in externa")
+}
+record(ai, "extPllStatusM")
+{
+    field(VAL,"0")
+    field(DESC,"Status register from external Pll")
+}
+record(ai, "extPllVcoDelayS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay phase of VCO in relation to RefClk")
+}
+record(ai, "extPllClkCourseDelayS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay phase of output clocks by 1/2 ADC ")
 }
 record(ai, "extPllClkPhaseAS")
 {
@@ -546,82 +620,142 @@ record(ai, "tbtOrbBCorrM")
     field(VAL,"0")
     field(DESC,"Continuious average position raw RMS val")
 }
-record(ai, "extInput0ModeCS")
+record(ai, "rtdlArrayM")
+{
+    field(VAL,"0")
+    field(DESC,"RTDL frame decoded from link in firmware")
+}
+record(stringout, "extInput0ModeCS")
 {
     field(VAL,"0")
     field(DESC,"When 'Interlock' is set, input level 1 r")
 }
-record(ai, "extInput1ModeCS")
+record(stringout, "extInput1ModeCS")
 {
     field(VAL,"0")
     field(DESC,"When 'Interlock' is set, input level 1 r")
 }
-record(ai, "extOutput0ModeCS")
+record(stringout, "extOutput0ModeCS")
 {
     field(VAL,"0")
     field(DESC,"Set mode of external IO output port 0")
 }
-record(ai, "extOutput1ModeCS")
+record(stringout, "extOutput1ModeCS")
 {
     field(VAL,"0")
     field(DESC,"Set mode of external IO output port 1")
 }
-record(ai, "extOutput2ModeCS")
+record(stringout, "extOutput2ModeCS")
 {
     field(VAL,"0")
     field(DESC,"Set mode of external IO output port 2")
 }
-record(ai, "extOutput3ModeCS")
+record(stringout, "extOutput3ModeCS")
 {
     field(VAL,"0")
     field(DESC,"Set mode of external IO output port 3")
 }
-record(ai, "eventTrigBunchLimitCS")
+record(ai, "extOutputDivideS")
+{
+    field(VAL,"0")
+    field(DESC,"Divide external output trigger by this f")
+}
+record(ai, "extOutputDelayS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay external output trigger by this ma")
+}
+record(ai, "eventTrigBunchLimitS")
 {
     field(VAL,"0")
     field(DESC,"Number of bunches to trigger on when usi")
 }
-record(ai, "linkBS1Delay1CourseCS")
+record(stringout, "trackRevFreqS")
+{
+    field(VAL,"0")
+    field(DESC,"When 'Track' is set, fine delays are adj")
+}
+record(ai, "trackFactorS")
+{
+    field(VAL,"0")
+    field(DESC,"Factor of picoseconds of delay per Hz on")
+}
+record(ai, "baseRevFreqS")
+{
+    field(VAL,"0")
+    field(DESC,"Base revolution frequency used for track")
+}
+record(ai, "rtdlRevFreqM")
+{
+    field(VAL,"0")
+    field(DESC,"Yellow ring revolution frequency read fr")
+}
+record(ai, "trackDelayM")
+{
+    field(VAL,"0")
+    field(DESC,"Delay in picosecodes from base delay set")
+}
+record(ai, "linkBS1Delay1CourseS")
 {
     field(VAL,"0")
     field(DESC,"Delay counter for Beam Sync Link Ch. 1 -")
 }
-record(ai, "linkBS1Delay1FineCS")
+record(ai, "linkBS1Delay1CourseBaseS")
 {
     field(VAL,"0")
     field(DESC,"Delay counter for Beam Sync Link Ch. 1 -")
 }
-record(ai, "linkBS2Delay1CourseCS")
+record(ai, "linkBS1Delay1FineS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 1 -")
+}
+record(ai, "linkBS1Delay1FineBaseS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 1 -")
+}
+record(ai, "linkBS2Delay1CourseS")
 {
     field(VAL,"0")
     field(DESC,"Delay counter for Beam Sync Link Ch. 2 -")
 }
-record(ai, "linkBS2Delay1FineCS")
+record(ai, "linkBS2Delay1CourseBaseS")
 {
     field(VAL,"0")
     field(DESC,"Delay counter for Beam Sync Link Ch. 2 -")
 }
-record(ai, "linkEV1Delay1CS")
+record(ai, "linkBS2Delay1FineS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 2 -")
+}
+record(ai, "linkBS2Delay1FineBaseS")
+{
+    field(VAL,"0")
+    field(DESC,"Delay counter for Beam Sync Link Ch. 2 -")
+}
+record(ai, "linkEV1Delay1S")
 {
     field(VAL,"0")
     field(DESC,"Delay counter for Event Link Ch. 1")
 }
-record(ai, "linkBS1TestCodeCS")
+record(ai, "linkBS1TestCodeS")
 {
     field(VAL,"0")
     field(DESC,"Test Code counter for Beam Sync Link Ch.")
 }
-record(ai, "linkBS2TestCodeCS")
+record(ai, "linkBS2TestCodeS")
 {
     field(VAL,"0")
     field(DESC,"Test code counter for Beam Sync Link Ch.")
 }
-record(ai, "linkEV1TestCodeCS")
+record(ai, "linkEV1TestCodeS")
 {
     field(VAL,"0")
     field(DESC,"Test code counter for Event Link Ch. 1")
 }
-record(ai, "ethernetConfigCS")
+record(ai, "ethernetConfigS")
 {
     field(VAL,"0")
     field(DESC,"Control register for PL side Ethernet Li")
@@ -711,6 +845,11 @@ record(ai, "fpgaAlarmM")
     field(VAL,"0")
     field(DESC,"FPGA Alarm Condition")
 }
+record(stringout, "fftControlS")
+{
+    field(VAL,"0")
+    field(DESC,"Turn Goertzel and FFT calculations and d")
+}
 record(ai, "goertzelFreqS")
 {
     field(VAL,"0")
@@ -760,6 +899,31 @@ record(ai, "fftRatioM")
 {
     field(VAL,"0")
     field(DESC,"Ratio of the two FFT channels")
+}
+record(ai, "phaseAM")
+{
+    field(VAL,"0")
+    field(DESC,"FFT phase measurement of raw ADC data fo")
+}
+record(ai, "phaseBM")
+{
+    field(VAL,"0")
+    field(DESC,"FFT phase measurement of raw ADC data fo")
+}
+record(ai, "phaseDiffM")
+{
+    field(VAL,"0")
+    field(DESC,"Difference between phases of the two cha")
+}
+record(stringout, "firstChannelS")
+{
+    field(VAL,"0")
+    field(DESC,"Select which channel is believed to be f")
+}
+record(ai, "iqPhaseM")
+{
+    field(VAL,"0")
+    field(DESC,"Difference between phases of the two cha")
 }
 record(ai, "spare1S")
 {
@@ -811,4 +975,4 @@ record(ai, "spare2CM")
     field(VAL,"0")
     field(DESC,"Common Spare 2")
 }
-# Generated 163 EPICS records
+# Generated 196 EPICS records
