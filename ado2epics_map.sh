@@ -15,6 +15,9 @@ EXAMPLE:
 EOF
 }
 # Version 01 2016-08-04 by Andrei Sukhanov
+# Version 02 2016-08-08 Added space at the beginning of the output line. 
+#                       Useful for manual manipulation of the generated map file
+
 DIRECTION="<" # direction of parameter transfer
 #         ">" from epics to ADO
 #         "x" both directions  
@@ -47,7 +50,7 @@ process_cmd() {
      ((ii++))
      if [ $VERB -ne "0" ]; then echo "line $line"; fi
      WORDS=($line)
-     echo ",${WORDS[0]},$DIRECTION,${WORDS[0]}"
+     echo " ,${WORDS[0]},$DIRECTION,${WORDS[0]}"
   done
   if [ $ii -eq "0" ]; then echo "No variables found in ADO \"$ADONAME\""; exit 1;
   else 

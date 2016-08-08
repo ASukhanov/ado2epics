@@ -1,167 +1,167 @@
 # epics2ado map is generated using "./ado2epics_map.sh bpm301.919a-t1.H" command
 # Manual mods: commented problematic records
 #
-,fecName,<,fecName
-,description,<,description
-,constructTime,<,constructTime
-,version,<,version
-,className,<,className
-,commandBuffer,<,commandBuffer
-,commandBufferLength,<,commandBufferLength
-,systemNameS,<,systemNameS
-,planeNameM,<,planeNameM
-,firmwareVersionM,<,firmwareVersionM
-,firmwareSubVersionM,<,firmwareSubVersionM
-,boardTypeM,<,boardTypeM
-,ignoreStatusCheckS,<,ignoreStatusCheckS
-,statusM,<,statusM
-,interlockStatusM,<,interlockStatusM
-,heartbeatM,<,heartbeatM
-,rawATimestampM,<,rawATimestampM
-,rawBTimestampM,<,rawBTimestampM
-,rtdlTimestampM,<,rtdlTimestampM
-,turnCountM,<,turnCountM
-#,rawAM,<,rawAM
-#,rawBM,<,rawBM
-,rmsAM,<,rmsAM
-,rmsBM,<,rmsBM
-#,accumAM,<,accumAM
-#,accumBM,<,accumBM
-,accumAfloatM,<,accumAfloatM
-,accumBfloatM,<,accumBfloatM
-,positionM,<,positionM
-,avgPositionM,<,avgPositionM
-,positionCalcM,<,positionCalcM
-#,tbtPositionM,<,tbtPositionM
-#,positionArrayM,<,positionArrayM
-,posPeakToPeakM,<,posPeakToPeakM
-,positionArrayAvgM,<,positionArrayAvgM
-,positionArrayStdDevM,<,positionArrayStdDevM
-,coherenceM,<,coherenceM
-,bbbPositionM,<,bbbPositionM
-,bbbStatusM,<,bbbStatusM
-,bbbBunchCountM,<,bbbBunchCountM
-,adcClkDelayAM,<,adcClkDelayAM
-,adcClkDelayBM,<,adcClkDelayBM
-,bpmOrientationCS,<,bpmOrientationCS
-,fpgaResetA,<,fpgaResetA
-,triggerModeAS,<,triggerModeAS
-,triggerModeBS,<,triggerModeBS
-,triggerTypeS,<,triggerTypeS
-,interlockEnableS,<,interlockEnableS
-,interlockResetS,<,interlockResetS
-,interlockIgnoreCntS,<,interlockIgnoreCntS
-,interlockHighLimitS,<,interlockHighLimitS
-,interlockLowLimitS,<,interlockLowLimitS
-,positionOffsetS,<,positionOffsetS
-,offsetAS,<,offsetAS
-,offsetBS,<,offsetBS
-,calGainAS,<,calGainAS
-,calGainBS,<,calGainBS
-,coef1S,<,coef1S
-,coef3S,<,coef3S
-,thresholdS,<,thresholdS
-,nSamplesS,<,nSamplesS
-,bunchSamplesS,<,bunchSamplesS
-,nSamplesHoldoffS,<,nSamplesHoldoffS
-,samplesPerTurnS,<,samplesPerTurnS
-,cAvgDivideS,<,cAvgDivideS
-,nthSampleS,<,nthSampleS
-,adcDataClkDelayAS,<,adcDataClkDelayAS
-,adcDataClkDelayBS,<,adcDataClkDelayBS
-,positionCalcModeS,<,positionCalcModeS
-,bunchSelectS,<,bunchSelectS
-,bunchAvgSkipS,<,bunchAvgSkipS
-,bunchAvgLimitS,<,bunchAvgLimitS
-,externalTrigDelayS,<,externalTrigDelayS
-,eventTrigSourceS,<,eventTrigSourceS
-,adcClkSourceS,<,adcClkSourceS
-,adcClkRefS,<,adcClkRefS
-,adcClkRefDivideS,<,adcClkRefDivideS
-,adcClkRefMultS,<,adcClkRefMultS
-,adcPllVcoFreqM,<,adcPllVcoFreqM
-,adcClkOutDivideS,<,adcClkOutDivideS
-,adcClkFreqM,<,adcClkFreqM
-,adcClkReconfigA,<,adcClkReconfigA
-,adcClkPhaseAS,<,adcClkPhaseAS
-,adcClkPhaseBS,<,adcClkPhaseBS
-,extPllClkRefS,<,extPllClkRefS
-,extPllClkRefDivideS,<,extPllClkRefDivideS
-,extPllClkRefMultS,<,extPllClkRefMultS
-,extPllVcoFreqM,<,extPllVcoFreqM
-,extPllClkOutDivideS,<,extPllClkOutDivideS
-,extPllClkFreqM,<,extPllClkFreqM
-,extPllClkReconfigA,<,extPllClkReconfigA
-,extPllClkPhaseAS,<,extPllClkPhaseAS
-,extPllClkPhaseBS,<,extPllClkPhaseBS
-,extPllClkPhaseCS,<,extPllClkPhaseCS
-,extPllClkPhaseDS,<,extPllClkPhaseDS
-,attenA1S,<,attenA1S
-,attenA2S,<,attenA2S
-,attenB1S,<,attenB1S
-,attenB2S,<,attenB2S
-,avgTimestampM,<,avgTimestampM
-,avgOrbPositionM,<,avgOrbPositionM
-,avgOrbStatM,<,avgOrbStatM
-,avgOrbACorrM,<,avgOrbACorrM
-,avgOrbBCorrM,<,avgOrbBCorrM
-,avgOrbVarianceM,<,avgOrbVarianceM
-#,tbtTimestampM,<,tbtTimestampM
-#,tbtOrbPositionM,<,tbtOrbPositionM
-#,tbtOrbStatM,<,tbtOrbStatM
-#,tbtOrbACorrM,<,tbtOrbACorrM
-#,tbtOrbBCorrM,<,tbtOrbBCorrM
-,extInput0ModeCS,<,extInput0ModeCS
-,extInput1ModeCS,<,extInput1ModeCS
-,extOutput0ModeCS,<,extOutput0ModeCS
-,extOutput1ModeCS,<,extOutput1ModeCS
-,extOutput2ModeCS,<,extOutput2ModeCS
-,extOutput3ModeCS,<,extOutput3ModeCS
-,eventTrigBunchLimitCS,<,eventTrigBunchLimitCS
-,linkBS1Delay1CourseCS,<,linkBS1Delay1CourseCS
-,linkBS1Delay1FineCS,<,linkBS1Delay1FineCS
-,linkBS2Delay1CourseCS,<,linkBS2Delay1CourseCS
-,linkBS2Delay1FineCS,<,linkBS2Delay1FineCS
-,linkEV1Delay1CS,<,linkEV1Delay1CS
-,linkBS1TestCodeCS,<,linkBS1TestCodeCS
-,linkBS2TestCodeCS,<,linkBS2TestCodeCS
-,linkEV1TestCodeCS,<,linkEV1TestCodeCS
-,ethernetConfigCS,<,ethernetConfigCS
-,miscIOInBitsM,<,miscIOInBitsM
-,linkStatusM,<,linkStatusM
-,ethernetStatusM,<,ethernetStatusM
-,linkBS1ErrorCntM,<,linkBS1ErrorCntM
-,linkBS2ErrorCntM,<,linkBS2ErrorCntM
-,linkEV1ErrorCntM,<,linkEV1ErrorCntM
-,linkBS1TestCntM,<,linkBS1TestCntM
-,linkBS2TestCntM,<,linkBS2TestCntM
-,linkEV1TestCntM,<,linkEV1TestCntM
-,fpgaTemperatureM,<,fpgaTemperatureM
-,fpgaVccIntM,<,fpgaVccIntM
-,fpgaVccPIntM,<,fpgaVccPIntM
-,fpgaVccAuxM,<,fpgaVccAuxM
-,fpgaVccPAuxM,<,fpgaVccPAuxM
-,fpgaVccBramM,<,fpgaVccBramM
-,fpgaVccDDRM,<,fpgaVccDDRM
-,fpgaAlarmM,<,fpgaAlarmM
-,goertzelFreqS,<,goertzelFreqS
-,goertzelFreqM,<,goertzelFreqM
-,goertzelPosM,<,goertzelPosM
-,goertzelAmpAM,<,goertzelAmpAM
-,goertzelAmpBM,<,goertzelAmpBM
-,goertzelKM,<,goertzelKM
-,channelCalM,<,channelCalM
-#,fftAM,<,fftAM
-#,fftBM,<,fftBM
-#,fftRatioM,<,fftRatioM
-,spare1S,<,spare1S
-,spare2S,<,spare2S
-,spare3S,<,spare3S
-,spare1M,<,spare1M
-,spare2M,<,spare2M
-,spare3M,<,spare3M
-,spare1CS,<,spare1CS
-,spare2CS,<,spare2CS
-,spare1CM,<,spare1CM
-,spare2CM,<,spare2CM
-#Processed 163 variables
+ ,fecName,<,fecName
+ ,description,<,description
+ ,constructTime,<,constructTime
+ ,version,<,version
+ ,className,<,className
+ ,commandBuffer,<,commandBuffer
+ ,commandBufferLength,<,commandBufferLength
+ ,systemNameS,<,systemNameS
+ ,planeNameM,<,planeNameM
+ ,firmwareVersionM,<,firmwareVersionM
+ ,firmwareSubVersionM,<,firmwareSubVersionM
+ ,boardTypeM,<,boardTypeM
+ ,ignoreStatusCheckS,<,ignoreStatusCheckS
+ ,statusM,<,statusM
+ ,interlockStatusM,<,interlockStatusM
+ ,heartbeatM,<,heartbeatM
+ ,rawATimestampM,<,rawATimestampM
+ ,rawBTimestampM,<,rawBTimestampM
+ ,rtdlTimestampM,<,rtdlTimestampM
+ ,turnCountM,<,turnCountM
+# ,rawAM,<,rawAM
+# ,rawBM,<,rawBM
+ ,rmsAM,<,rmsAM
+ ,rmsBM,<,rmsBM
+ ,accumAM,<,accumAM
+# ,accumBM,<,accumBM
+ ,accumAfloatM,<,accumAfloatM
+ ,accumBfloatM,<,accumBfloatM
+ ,positionM,<,positionM
+ ,avgPositionM,<,avgPositionM
+ ,positionCalcM,<,positionCalcM
+# ,tbtPositionM,<,tbtPositionM
+# ,positionArrayM,<,positionArrayM
+ ,posPeakToPeakM,<,posPeakToPeakM
+ ,positionArrayAvgM,<,positionArrayAvgM
+ ,positionArrayStdDevM,<,positionArrayStdDevM
+ ,coherenceM,<,coherenceM
+ ,bbbPositionM,<,bbbPositionM
+ ,bbbStatusM,<,bbbStatusM
+ ,bbbBunchCountM,<,bbbBunchCountM
+ ,adcClkDelayAM,<,adcClkDelayAM
+ ,adcClkDelayBM,<,adcClkDelayBM
+ ,bpmOrientationCS,<,bpmOrientationCS
+ ,fpgaResetA,<,fpgaResetA
+ ,triggerModeAS,<,triggerModeAS
+ ,triggerModeBS,<,triggerModeBS
+ ,triggerTypeS,<,triggerTypeS
+ ,interlockEnableS,<,interlockEnableS
+ ,interlockResetS,<,interlockResetS
+ ,interlockIgnoreCntS,<,interlockIgnoreCntS
+ ,interlockHighLimitS,<,interlockHighLimitS
+ ,interlockLowLimitS,<,interlockLowLimitS
+ ,positionOffsetS,<,positionOffsetS
+ ,offsetAS,<,offsetAS
+ ,offsetBS,<,offsetBS
+ ,calGainAS,<,calGainAS
+ ,calGainBS,<,calGainBS
+ ,coef1S,<,coef1S
+ ,coef3S,<,coef3S
+ ,thresholdS,<,thresholdS
+ ,nSamplesS,<,nSamplesS
+ ,bunchSamplesS,<,bunchSamplesS
+ ,nSamplesHoldoffS,<,nSamplesHoldoffS
+ ,samplesPerTurnS,<,samplesPerTurnS
+ ,cAvgDivideS,<,cAvgDivideS
+ ,nthSampleS,<,nthSampleS
+ ,adcDataClkDelayAS,<,adcDataClkDelayAS
+ ,adcDataClkDelayBS,<,adcDataClkDelayBS
+ ,positionCalcModeS,<,positionCalcModeS
+ ,bunchSelectS,<,bunchSelectS
+ ,bunchAvgSkipS,<,bunchAvgSkipS
+ ,bunchAvgLimitS,<,bunchAvgLimitS
+ ,externalTrigDelayS,<,externalTrigDelayS
+ ,eventTrigSourceS,<,eventTrigSourceS
+ ,adcClkSourceS,<,adcClkSourceS
+ ,adcClkRefS,<,adcClkRefS
+ ,adcClkRefDivideS,<,adcClkRefDivideS
+ ,adcClkRefMultS,<,adcClkRefMultS
+ ,adcPllVcoFreqM,<,adcPllVcoFreqM
+ ,adcClkOutDivideS,<,adcClkOutDivideS
+ ,adcClkFreqM,<,adcClkFreqM
+ ,adcClkReconfigA,<,adcClkReconfigA
+ ,adcClkPhaseAS,<,adcClkPhaseAS
+ ,adcClkPhaseBS,<,adcClkPhaseBS
+ ,extPllClkRefS,<,extPllClkRefS
+ ,extPllClkRefDivideS,<,extPllClkRefDivideS
+ ,extPllClkRefMultS,<,extPllClkRefMultS
+ ,extPllVcoFreqM,<,extPllVcoFreqM
+ ,extPllClkOutDivideS,<,extPllClkOutDivideS
+ ,extPllClkFreqM,<,extPllClkFreqM
+ ,extPllClkReconfigA,<,extPllClkReconfigA
+ ,extPllClkPhaseAS,<,extPllClkPhaseAS
+ ,extPllClkPhaseBS,<,extPllClkPhaseBS
+ ,extPllClkPhaseCS,<,extPllClkPhaseCS
+ ,extPllClkPhaseDS,<,extPllClkPhaseDS
+ ,attenA1S,<,attenA1S
+ ,attenA2S,<,attenA2S
+ ,attenB1S,<,attenB1S
+ ,attenB2S,<,attenB2S
+ ,avgTimestampM,<,avgTimestampM
+ ,avgOrbPositionM,<,avgOrbPositionM
+ ,avgOrbStatM,<,avgOrbStatM
+ ,avgOrbACorrM,<,avgOrbACorrM
+ ,avgOrbBCorrM,<,avgOrbBCorrM
+ ,avgOrbVarianceM,<,avgOrbVarianceM
+# ,tbtTimestampM,<,tbtTimestampM
+# ,tbtOrbPositionM,<,tbtOrbPositionM
+# ,tbtOrbStatM,<,tbtOrbStatM
+# ,tbtOrbACorrM,<,tbtOrbACorrM
+# ,tbtOrbBCorrM,<,tbtOrbBCorrM
+ ,extInput0ModeCS,<,extInput0ModeCS
+ ,extInput1ModeCS,<,extInput1ModeCS
+ ,extOutput0ModeCS,<,extOutput0ModeCS
+ ,extOutput1ModeCS,<,extOutput1ModeCS
+ ,extOutput2ModeCS,<,extOutput2ModeCS
+ ,extOutput3ModeCS,<,extOutput3ModeCS
+ ,eventTrigBunchLimitCS,<,eventTrigBunchLimitCS
+ ,linkBS1Delay1CourseCS,<,linkBS1Delay1CourseCS
+ ,linkBS1Delay1FineCS,<,linkBS1Delay1FineCS
+ ,linkBS2Delay1CourseCS,<,linkBS2Delay1CourseCS
+ ,linkBS2Delay1FineCS,<,linkBS2Delay1FineCS
+ ,linkEV1Delay1CS,<,linkEV1Delay1CS
+ ,linkBS1TestCodeCS,<,linkBS1TestCodeCS
+ ,linkBS2TestCodeCS,<,linkBS2TestCodeCS
+ ,linkEV1TestCodeCS,<,linkEV1TestCodeCS
+ ,ethernetConfigCS,<,ethernetConfigCS
+ ,miscIOInBitsM,<,miscIOInBitsM
+ ,linkStatusM,<,linkStatusM
+ ,ethernetStatusM,<,ethernetStatusM
+ ,linkBS1ErrorCntM,<,linkBS1ErrorCntM
+ ,linkBS2ErrorCntM,<,linkBS2ErrorCntM
+ ,linkEV1ErrorCntM,<,linkEV1ErrorCntM
+ ,linkBS1TestCntM,<,linkBS1TestCntM
+ ,linkBS2TestCntM,<,linkBS2TestCntM
+ ,linkEV1TestCntM,<,linkEV1TestCntM
+ ,fpgaTemperatureM,<,fpgaTemperatureM
+ ,fpgaVccIntM,<,fpgaVccIntM
+ ,fpgaVccPIntM,<,fpgaVccPIntM
+ ,fpgaVccAuxM,<,fpgaVccAuxM
+ ,fpgaVccPAuxM,<,fpgaVccPAuxM
+ ,fpgaVccBramM,<,fpgaVccBramM
+ ,fpgaVccDDRM,<,fpgaVccDDRM
+ ,fpgaAlarmM,<,fpgaAlarmM
+ ,goertzelFreqS,<,goertzelFreqS
+ ,goertzelFreqM,<,goertzelFreqM
+ ,goertzelPosM,<,goertzelPosM
+ ,goertzelAmpAM,<,goertzelAmpAM
+ ,goertzelAmpBM,<,goertzelAmpBM
+ ,goertzelKM,<,goertzelKM
+ ,channelCalM,<,channelCalM
+# ,fftAM,<,fftAM
+# ,fftBM,<,fftBM
+# ,fftRatioM,<,fftRatioM
+ ,spare1S,<,spare1S
+ ,spare2S,<,spare2S
+ ,spare3S,<,spare3S
+ ,spare1M,<,spare1M
+ ,spare2M,<,spare2M
+ ,spare3M,<,spare3M
+ ,spare1CS,<,spare1CS
+ ,spare2CS,<,spare2CS
+ ,spare1CM,<,spare1CM
+ ,spare2CM,<,spare2CM
+# Processed 163 variables

@@ -107,7 +107,7 @@ int parse_epics2ado_csvmap(
       if(gVerb&VERB_DETAILED) puts (mystring);
       if(mystring[0]=='#') continue;
       instring = mystring+1; //skip first comma
-
+      instring = strchr(mystring,',') + 1; //skip everything before first comma
       //check if the field in the second column matches the key
       key = strchr(instring,',');
       if(key[1] != selectkey && selectkey != '*') //check if record should be dropped
