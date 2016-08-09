@@ -10,7 +10,7 @@
 
 #include "tool_lib.h"
 
-int charArrAsStr = 0;    /* used for -S option - treat char array as (long) string */
+//int charArrAsStr = 0;    /* used for -S option - treat char array as (long) string */
 double caTimeout = 1.0;  /* wait time default (see -w option) */
 capri caPriority = DEFAULT_CA_PRIORITY;  /* CA Priority */
 

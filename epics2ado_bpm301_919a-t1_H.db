@@ -100,14 +100,16 @@ record(ai, "turnCountM")
     field(VAL,"0")
     field(DESC,"Turns (since sync event when beamsync li")
 }
-record(ai, "rawAM")
+record(waveform, "rawAM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Raw A array")
 }
-record(ai, "rawBM")
+record(waveform, "rawBM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Raw A array")
 }
 record(ai, "rmsAM")
@@ -120,14 +122,16 @@ record(ai, "rmsBM")
     field(VAL,"0")
     field(DESC,"Most recent single turn rms for input B")
 }
-record(ai, "accumAM")
+record(waveform, "accumAM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"High and low words of accum of squares f")
 }
-record(ai, "accumBM")
+record(waveform, "accumBM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"High and low words of accum of squares f")
 }
 record(ai, "accumAfloatM")
@@ -155,14 +159,16 @@ record(ai, "positionCalcM")
     field(VAL,"0")
     field(DESC,"Calculated position using Sum of squares")
 }
-record(ai, "tbtPositionM")
+record(waveform, "tbtPositionM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"1024")
     field(DESC,"Raw position array")
 }
-record(ai, "positionArrayM")
+record(waveform, "positionArrayM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Raw position array")
 }
 record(ai, "posPeakToPeakM")
@@ -180,19 +186,22 @@ record(ai, "positionArrayStdDevM")
     field(VAL,"0")
     field(DESC,"Standard Deviation of RMS position based")
 }
-record(ai, "coherenceM")
+record(waveform, "coherenceM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"coherence for each bunch")
 }
-record(ai, "bbbPositionM")
+record(waveform, "bbbPositionM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"position for each bunch")
 }
-record(ai, "bbbStatusM")
+record(waveform, "bbbStatusM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"status of position measurement for each ")
 }
 record(ai, "bbbBunchCountM")
@@ -565,9 +574,10 @@ record(ai, "attenB2S")
     field(VAL,"0")
     field(DESC,"Attenuation Setting for Channel B Stage ")
 }
-record(ai, "avgTimestampM")
+record(waveform, "avgTimestampM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Unix time and turn counter of the averag")
 }
 record(ai, "avgOrbPositionM")
@@ -595,34 +605,40 @@ record(ai, "avgOrbVarianceM")
     field(VAL,"0")
     field(DESC,"Continuious average position variance")
 }
-record(ai, "tbtTimestampM")
+record(waveform, "tbtTimestampM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Unix time and turn counter of the turn-b")
 }
-record(ai, "tbtOrbPositionM")
+record(waveform, "tbtOrbPositionM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"1024")
     field(DESC,"Continuious average position (same as po")
 }
-record(ai, "tbtOrbStatM")
+record(waveform, "tbtOrbStatM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"1024")
     field(DESC,"Position measurement status at the turn-")
 }
-record(ai, "tbtOrbACorrM")
+record(waveform, "tbtOrbACorrM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"1024")
     field(DESC,"Continuious average position raw RMS val")
 }
-record(ai, "tbtOrbBCorrM")
+record(waveform, "tbtOrbBCorrM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"1024")
     field(DESC,"Continuious average position raw RMS val")
 }
-record(ai, "rtdlArrayM")
+record(waveform, "rtdlArrayM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"256")
     field(DESC,"RTDL frame decoded from link in firmware")
 }
 record(stringout, "extInput0ModeCS")
@@ -885,34 +901,40 @@ record(ai, "channelCalM")
     field(VAL,"0")
     field(DESC,"k value of goertzel")
 }
-record(ai, "fftAM")
+record(waveform, "fftAM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"FFT of raw ADC data for A channel")
 }
-record(ai, "fftBM")
+record(waveform, "fftBM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"FFT of raw ADC data for B channel")
 }
-record(ai, "fftRatioM")
+record(waveform, "fftRatioM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Ratio of the two FFT channels")
 }
-record(ai, "phaseAM")
+record(waveform, "phaseAM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"FFT phase measurement of raw ADC data fo")
 }
-record(ai, "phaseBM")
+record(waveform, "phaseBM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"FFT phase measurement of raw ADC data fo")
 }
-record(ai, "phaseDiffM")
+record(waveform, "phaseDiffM")
 {
-    field(VAL,"0")
+    field(FTVL,"DOUBLE")
+    field(NELM,"2")
     field(DESC,"Difference between phases of the two cha")
 }
 record(stringout, "firstChannelS")

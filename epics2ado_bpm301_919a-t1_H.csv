@@ -26,14 +26,14 @@
  ,rmsAM,<,rmsAM
  ,rmsBM,<,rmsBM
  ,accumAM,<,accumAM
-# ,accumBM,<,accumBM
+ ,accumBM,<,accumBM
  ,accumAfloatM,<,accumAfloatM
  ,accumBfloatM,<,accumBfloatM
  ,positionM,<,positionM
  ,avgPositionM,<,avgPositionM
  ,positionCalcM,<,positionCalcM
-# ,tbtPositionM,<,tbtPositionM
-# ,positionArrayM,<,positionArrayM
+ ,tbtPositionM,<,tbtPositionM
+ ,positionArrayM,<,positionArrayM
  ,posPeakToPeakM,<,posPeakToPeakM
  ,positionArrayAvgM,<,positionArrayAvgM
  ,positionArrayStdDevM,<,positionArrayStdDevM
@@ -106,11 +106,11 @@
  ,avgOrbACorrM,<,avgOrbACorrM
  ,avgOrbBCorrM,<,avgOrbBCorrM
  ,avgOrbVarianceM,<,avgOrbVarianceM
-# ,tbtTimestampM,<,tbtTimestampM
-# ,tbtOrbPositionM,<,tbtOrbPositionM
-# ,tbtOrbStatM,<,tbtOrbStatM
-# ,tbtOrbACorrM,<,tbtOrbACorrM
-# ,tbtOrbBCorrM,<,tbtOrbBCorrM
+ ,tbtTimestampM,<,tbtTimestampM
+ ,tbtOrbPositionM,<,tbtOrbPositionM
+ ,tbtOrbStatM,<,tbtOrbStatM
+ ,tbtOrbACorrM,<,tbtOrbACorrM
+ ,tbtOrbBCorrM,<,tbtOrbBCorrM
  ,extInput0ModeCS,<,extInput0ModeCS
  ,extInput1ModeCS,<,extInput1ModeCS
  ,extOutput0ModeCS,<,extOutput0ModeCS

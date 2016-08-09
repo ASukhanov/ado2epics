@@ -1,6 +1,7 @@
 /*
  * Stripped down version of EPICS' caput.c.
  * Version 02 2016-08-03 by Andrei Sukhanov.
+ * Version 03 2016-08-09 Support arrays. mods: caput(), caput_string(), caput_numbers()
  */
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 // the following is for debug version
@@ -55,9 +56,9 @@ void put_event_handler ( struct event_handler_args args )
 pv* pvs=NULL;                /* Array of PV structures */
 
 //'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-int caput_string(const char* pvname, const char* value)
+int caput(const char* pvname, int isNumeric, int nvalues, const void *values)
 {
-	DBGprintf("caput_string: caput(%s,%s)\n",pvname,value);
+	DBGprintf("caput(%s,%i,%i)\n",pvname,isNumeric,nvalues);
     int result;                 /* CA result */
     RequestT request = get;     /* User specified request type */
     //request = callback;
@@ -66,24 +67,21 @@ int caput_string(const char* pvname, const char* value)
     //int i;
     int count = 1;
     chtype dbrType = DBR_STRING;
-    EpicsStr *sbuf;
-    double *dbuf;
-    char *cbuf = 0;
-    char *ebuf = 0;
-    void *pbuf;
-    int len = 0;
+    EpicsStr *sbuf = NULL;
+    double *dbuf = NULL;
+    //char *cbuf = NULL;
+    char *ebuf = NULL;
+    void *pbuf = NULL;
+    //int len = 0;
     int waitStatus;
 
     int nPvs;                   /* Number of PVs */
 
     // set globals , defined in tool_lib global to default
-    charArrAsStr = 0;
+    //charArrAsStr = 0;
     if (caPriority > CA_PRIORITY_MAX) caPriority = CA_PRIORITY_MAX;
 
-    //optind = 1;
-
     nPvs = 1;                   /* One PV - the rest is value(s) */
-    //DBGprintf("caput_main: (%i,%s)\n",argc,argv[1]);
     epId = epicsEventCreate(epicsEventEmpty);  /* Create empty EPICS event (semaphore) */
 
                                 /* Start up Channel Access */
@@ -107,52 +105,69 @@ int caput_string(const char* pvname, const char* value)
                                 /* Connect channels */
 
     pvs[0].name = pvname ;   /* Copy PV name from command line */
+	//&RA/does not work here/pvs[0].nElems = nvalues;
 
     result = connect_pvs(pvs, nPvs); /* If the connection fails, we're done */
     if (result) {
         ca_context_destroy();
         return result;
     }
-    sbuf = calloc (count, sizeof(EpicsStr));
-    dbuf = calloc (count, sizeof(double));
-    if(!sbuf || !dbuf) {
-        fprintf(stderr, "Memory allocation failed\n");
-        return 1;
-    }
-
-    //optind = 2;
-    //DBGprintf("count=%i, optind=%i\n",count,optind);//&RA
-    if (charArrAsStr) {
-    	count = len;
-    	dbrType = DBR_CHAR;
-    	ebuf = calloc(strlen(cbuf)+1, sizeof(char));
-    	if(!ebuf) {
+    if(isNumeric) dbrType = DBR_DOUBLE;
+    else
+    {
+    	sbuf = calloc (count, sizeof(EpicsStr));
+    	// the count is not supplied properly, we have to handle it ourselves
+    	dbuf = calloc (count, sizeof(double));
+    	if(!sbuf || !dbuf) {
     		fprintf(stderr, "Memory allocation failed\n");
     		return 1;
     	}
-    	epicsStrnRawFromEscaped(ebuf, strlen(cbuf)+1, cbuf, strlen(cbuf));
-    } else {
-    	//for (i = 0; i < count; ++i) {
-    	//    epicsStrnRawFromEscaped(sbuf[i], sizeof(EpicsStr), *(argv+optind+i), sizeof(EpicsStr));
-    	//	*( sbuf[i]+sizeof(EpicsStr)-1 ) = '\0';
-    	//}
-    	epicsStrnRawFromEscaped(sbuf[0], sizeof(EpicsStr), value, sizeof(EpicsStr));
-    	    		*( sbuf[0]+sizeof(EpicsStr)-1 ) = '\0';
-    	dbrType = DBR_STRING;
+    	/*if (charArrAsStr) {
+    		count = len;
+    		dbrType = DBR_CHAR;
+    		ebuf = calloc(strlen(cbuf)+1, sizeof(char));
+    		if(!ebuf) {
+    			fprintf(stderr, "Memory allocation failed\n");
+    			return 1;
+    		}
+    		epicsStrnRawFromEscaped(ebuf, strlen(cbuf)+1, cbuf, strlen(cbuf));
+    	} else*/
+    	{
+    		//for (i = 0; i < count; ++i) {
+    		//    epicsStrnRawFromEscaped(sbuf[i], sizeof(EpicsStr), *(argv+optind+i), sizeof(EpicsStr));
+    		//	*( sbuf[i]+sizeof(EpicsStr)-1 ) = '\0';
+    		//}
+    		epicsStrnRawFromEscaped(sbuf[0], sizeof(EpicsStr), values, sizeof(EpicsStr));
+    		*( sbuf[0]+sizeof(EpicsStr)-1 ) = '\0';
+    		dbrType = DBR_STRING;
+    	}
+        if (dbrType == DBR_STRING) pbuf = sbuf;
+        else if (dbrType == DBR_CHAR) pbuf = ebuf;
+        else pbuf = dbuf;
     }
 
-    if (dbrType == DBR_STRING) pbuf = sbuf;
-    else if (dbrType == DBR_CHAR) pbuf = ebuf;
-    else pbuf = dbuf;
-    DBGprintf("putting %s\n",(char*)pbuf);
     if (request == callback) {
+    	DBGprintf("ca_array_put_callback(type=%i, count=%i, val=%s\n",(int)dbrType,count,(char*)pbuf);
         /* Use callback version of put */
         pvs[0].status = ECA_NORMAL;   /* All ok at the moment */
         result = ca_array_put_callback (
             dbrType, count, pvs[0].ch_id, pbuf, put_event_handler, (void *) pvs);
-    } else {
+    } else
+    {
+
         /* Use standard put with defined timeout */
-        result = ca_array_put (dbrType, count, pvs[0].ch_id, pbuf);
+    	if(dbrType==DBR_DOUBLE)
+    	{
+    		//double *dptr = (double*)values;
+    		//DBGprintf("ca_array_put(DBR_DOUBLE=%i, count=%i, val[0]=%g)\n",(int)dbrType,nvalues,dptr[0]);
+    		DBGprintf("ca_array_put(DBR_DOUBLE=%i, count=%i, val[0]=%g)\n",(int)dbrType,nvalues,*((double*)values));
+    		result = ca_array_put (dbrType, nvalues, pvs[0].ch_id, values);
+    	}
+    	else
+    	{
+    		DBGprintf("ca_array_put(type=%i, count=%i, val=%s)\n",(int)dbrType,nvalues,(char*)pbuf);
+    		result = ca_array_put (dbrType, nvalues, pvs[0].ch_id, pbuf);
+    	}
     }
     result = ca_pend_io(caTimeout);
     if (result == ECA_TIMEOUT) {
@@ -176,17 +191,21 @@ int caput_string(const char* pvname, const char* value)
     ca_context_destroy();
     DBGprintf("PV address at the end %lx\n",(unsigned long)pvs);
     DBGprintf("PV name %s\n",pvs[0].name);
-    if(pvs[0].value) {free(pvs[0].value); pvs[0].value=NULL;}
+    if(pvs[0].value) {DBGprintf("%s\n","freeing pvs.value");free(pvs[0].value); pvs[0].value=NULL;}
+    DBGprintf("%s\n","freeing the rest");
     if(pvs) {free(pvs); pvs=NULL;}
     if(sbuf) {free(sbuf); sbuf=NULL;}
     if(dbuf) {free(dbuf); dbuf=NULL;}
     if(ebuf) {free(ebuf); ebuf=NULL;}
+    DBGprintf("%s\n","caput out");
     return result;
 }
-int caput_number(const char* pvname, double value)
+int caput_string(const char* pvname, const char* value)
 {
-	EpicsStr str;
-	snprintf(str,sizeof(str),"%g",value);
-	DBGprintf("caput_number: caput(%s,%s)\n",pvname,str);
-	return caput_string(pvname,str);
+	return caput(pvname,0,1,value);
+}
+int caput_numbers(const char* pvname, int nvalues, const double *values)
+{
+	DBGprintf("caput_numbers(%s,%i,%g)\n",pvname,nvalues,values[0]);
+	return caput(pvname,1,nvalues,values);
 }

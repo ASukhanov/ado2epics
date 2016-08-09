@@ -16,6 +16,7 @@ EXAMPLE:
 EOF
 }
 # Version 01 2016-08-04 by Andrei Sukhanov
+# Version 02 2016-08-09 support for arrays, all stringType converted to 'stringout' record, the rest, by default, are 'ai' records
 
 VERB=0
 OPTIND=1 # to skip ADOName
@@ -50,34 +51,61 @@ process_cmd()
      if [ $VERB -ne "0" ]; then echo "line $line"; fi
      WORDS=($line)
      if [ ${WORDS[0]} != $VARIABLE ]; then
-       # close previous record and start new one
+       #'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+       #                     close previous record and start new one
        ((NUMBER_OF_RECORDS++))
        VARIABLE=${WORDS[0]}
        #
        # the first record is 'value' (is that always correct?), set the record type according to property type
-       RECTYPE="ai" # default record type is most generic: analog input
+       RECTYPE="ai" # default record type is most generic: analog input, hold one double
+       
+       # is it stringout record?
        if [ ${WORDS[2]} == "StringType" ]; then RECTYPE="stringout"; fi
+       
+       # is it array?
+       if [ ${WORDS[3]} != "1" ]; then # it is array
+         RECTYPE="waveform"; 
+         if [ ${WORDS[3]} == "0" ]; then # it is variable length array, not fully supported by EPICS,
+           NELM="2" # fix max length for variable array to 2, this can be changed in the output db file manually
+           else NELM=${WORDS[3]}
+         fi
+       fi
        #
        # TODO: handle other types
        #
        printf "}\nrecord($RECTYPE, \"%s\")\n{\n" $VARIABLE
      fi
+     #,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+     #'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+     #                       Generate 'fields'
      if [ ${WORDS[1]} == "desc" ]; then
        printf "    field(DESC,"
        DESC_CMD="adoIf -ns -voncr $ADONAME $VARIABLE:desc"
        DESC=$($DESC_CMD)
        echo "\"${DESC:0:$EPICS_MAX_STRING_LENGTH}\")"
-     else 
+     else
+       #'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+       #                     VAL field
        if [ ${WORDS[1]} == "value" ]; then
-         printf "    field(VAL,\"0\")\n"
+         if [ $RECTYPE == "waveform" ]; then # for array the VAL should be omitted, and FVTL present.
+           printf "    field(FTVL,\"DOUBLE\")\n" # DOUBLE should work for any type
+           printf "    field(NELM,\"$NELM\")\n"  # number of elements
+         else
+           printf "    field(VAL,\"0\")\n"
+         fi
        fi
      fi
+     #,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
   done
   printf "}\n"
   echo "# Generated $NUMBER_OF_RECORDS EPICS records"
 }
 
-echo "# EPICS database is generated using \"$0 $1\" command"
+echo "# EPICS database is generated on `date`"
+echo "# from live ADO using following command:" 
+echo "#    $0 $1 command"
+echo "# NOTE, the variable-length arrays are transformed to waveform records with NELM=2,"
+echo "#       the NELM could be manually adjusted in this file." 
 ADONAME=$1
 CMD="adoMetaData -f $ADONAME"
 eval $CMD | process_cmd

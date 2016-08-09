@@ -5,6 +5,7 @@
 // Version v03 2016-07-15 by &RA. Good. Major cleanup. getopts, parse_epics2ado_csvmap
 // Version v05 2016-07-15 by &RA. Good. extern "C" int gVerb
 // Version v06 2016-08-08 by &RA. Call  adoChanged() on initial property setting
+// Version v07 2016-08-08. Support for variable arrays. String and numbers treated differently
 
 #include <iostream>
 #include <iomanip>
@@ -40,6 +41,7 @@ extern "C" int gVerb; //printout verbosity. bit[0] info messages, bit[1]: debugg
 #define REMOVE_USELESS
 
 extern "C" int caput_string(const char* pvname, const char* value);
+extern "C" int caput_numbers(const char* pvname, int nvals, const double *values);
 
 //#define gpv2ado_map_filename "epics2ado.csv"
 char *gpv2ado_map_filename = NULL;
@@ -160,14 +162,14 @@ char* param2pv(const char* pvname, char* table[], const int ncols, const int nro
 	return nothing;
 }
 
-void adoChanged(const char* adoName, const char* propertyID, const char* aString)
+void adoChanged(const char* adoName, const char* propertyID, int count, const char* aString)
 {
 	char* rr;
-	if(gVerb&VERB_DEBUG) cout<<"ADO changed: "<<adoName<<" "<<propertyID<<":"<<aString<<endl;
+	if(gVerb&VERB_DEBUG) cout<<"ADO changed: "<<adoName<<" "<<propertyID<<":["<<count<<"] = "<<aString<<endl;
 	rr = param2pv(propertyID,gpv2ado_map,gncols,gnPvs);
 	if(rr!=NULL)
 	{
-		if(gVerb&VERB_DEBUG) cout<<"caput("<<rr<<","<<aString<<")"<<endl;
+		if(gVerb&VERB_DEBUG) cout<<"caput("<<rr<<"["<<count<<"],"<<aString<<")"<<endl;
 		caput_string(rr,aString);
 	}
 }
@@ -195,6 +197,7 @@ int datacb(AdoIf *a, int count, const char* const propertyID[], Value *data[],
 		const AsyncSetup* setup, void *arg, const void *reqId) {
 	numReceived++;
 
+	//Note: It looks like the count is always 1.
 	string _timeString;
 	int Time;
 	if (printUnixTimestamp) {
@@ -206,20 +209,43 @@ int datacb(AdoIf *a, int count, const char* const propertyID[], Value *data[],
 		Time = time(0) % 3600;
 	const char * const *adoNames = a->AdoNames();
 	int numAdos = a->NumAdos();
-#ifdef PRINTRID
-	cout << "request id = " << reqId << " = " << *(int *)reqId << " received"
-	<< " (" << numAdos << " ados, count = " << count << ")" << endl;
-#endif
+	if (gVerb & VERB_DETAILED)
+	  cout << "request id = " << reqId << " = " << *(int *)reqId << " received"
+	       << " (" << numAdos << " ados, count = " << count << ")" << endl;
+	Value *vptr = NULL;
+	double *dptr = NULL;
+	int nvalues=0;
+	char *pvname=NULL;
 	for (int ia = 0; ia < numAdos; ia++)
-		for (int ip = 0; ip < count; ip++) {
-
-			if (data[ia * count + ip] == 0)
-				continue;
-			char *aString = data[ia * count + ip]->StringVal(' ');
-			adoChanged(adoNames[ia], propertyID[ip], aString);
+		for (int ip = 0; ip < count; ip++)
+		{
+			vptr = data[ia * count + ip];
+			if (vptr == NULL) continue;
+			nvalues = (int)vptr->Length();
+			if(gVerb & VERB_DEBUG) {
+				cout<<"datacb["<<ip<<"] "<<propertyID[ip]<<"["<<nvalues <<"]= "<<":";
+				if(vptr->IsNumeric())
+				{
+					dptr = vptr->DoublePtr();
+					for(int ii=0;ii<nvalues;ii++) cout<<dptr[ii]<<" ";
+					cout<<endl;
+				}
+				else cout<<vptr->StringPtr()[0]<<endl;
+			}
+			pvname = param2pv(propertyID[ip],gpv2ado_map,gncols,gnPvs);
+			if(pvname==NULL) continue;
+			if(vptr->IsNumeric())
+			{
+				dptr = vptr->DoublePtr();
+				caput_numbers(pvname,nvalues,dptr);
+			}
+			else caput_string(pvname,vptr->StringPtr()[0]);
+			//char *aString = data[ia * count + ip]->StringVal(' ');
+			//adoChanged(adoNames[ia], propertyID[ip],  , nvalues, aString);
+			/*
 			if (gVerb & VERB_INFO)
 			{
-				cout << setw(5) << numReceived % 1000 << " ";
+				cout<<"adoChanged: "<< setw(5) << numReceived % 1000 << " ";
 				if (printUnixTimestamp) {
 					cout << setw(25) << _timeString.c_str() << "  ";
 				} else {
@@ -228,10 +254,11 @@ int datacb(AdoIf *a, int count, const char* const propertyID[], Value *data[],
 				}
 				//&RA/char *aString = data[ia * count + ip]->StringVal(' ');
 				cout << adoNames[ia] << " " << propertyID[ip] << " : " << "<"
-						<< aString << ">" << endl;
+						<< vptr->StringPtr()[0] << ">" << endl;
 			}
+			*/
 			//&RA/ the following line was in the original adoIfA.cxx, not sure the purpose of it.
-			free(aString); // to avoid Mismatched free() / delete / delete [] //delete [] aString;
+			//free(aString); // to avoid Mismatched free() / delete / delete [] //delete [] aString;
 		}
 	cout.flush();
 
@@ -516,7 +543,7 @@ AdoIf *adoIfArray[ MAXADOIFS ];
 	  }
 	  initial_value = val.StringVal(' ');
 	  if(gVerb&VERB_DEBUG) cout <<"Initial setting of "<<paramName<<" = "<<initial_value<<endl;
-	  adoChanged(adoIfArray[0]->AdoName(), paramName, initial_value);
+	  adoChanged(adoIfArray[0]->AdoName(), paramName, 1, initial_value);
   }
   if(nPropsRegistered==0) {cout<<"nPropsRegistered=0\n";exit(27);}
   if(gVerb&VERB_DEBUG) cout<<"nPropsRegistered="<<nPropsRegistered<<endl;
