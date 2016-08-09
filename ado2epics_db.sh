@@ -16,8 +16,11 @@ EXAMPLE:
 EOF
 }
 # Version 01 2016-08-04 by Andrei Sukhanov
-# Version 02 2016-08-09 support for arrays, all stringType converted to 'stringout' record, the rest, by default, are 'ai' records
+# Version 02 2016-08-09 Support for arrays, all stringType converted to 'stringout' records, 
+#                       the rest, by default, are the 'ai' records.
 
+#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#        Parse arguments
 VERB=0
 OPTIND=1 # to skip ADOName
 while getopts "v:" opt; do
@@ -37,7 +40,16 @@ shift $(($OPTIND - 1))
 if [ $# -lt 1 ]; then echo "No ADOName supplied"; usage; exit 1; fi
 
 EPICS_MAX_STRING_LENGTH=40 # EPICS has limited field sting length 
-
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+echo "# EPICS database is generated on `date`"
+echo "# from live ADO using following command:" 
+echo "#    $0 $1 command"
+echo "# NOTE, the variable-length arrays are transformed to waveform records with NELM=2,"
+echo "#       the NELM could be manually adjusted in this file." 
+ADONAME=$1
+CMD="adoMetaData -f $ADONAME"
+#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 process_cmd()
 {
   local VARIABLE="?"
@@ -100,14 +112,8 @@ process_cmd()
   printf "}\n"
   echo "# Generated $NUMBER_OF_RECORDS EPICS records"
 }
-
-echo "# EPICS database is generated on `date`"
-echo "# from live ADO using following command:" 
-echo "#    $0 $1 command"
-echo "# NOTE, the variable-length arrays are transformed to waveform records with NELM=2,"
-echo "#       the NELM could be manually adjusted in this file." 
-ADONAME=$1
-CMD="adoMetaData -f $ADONAME"
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 eval $CMD | process_cmd
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 
