@@ -18,6 +18,7 @@ EOF
 # Version 01 2016-08-04 by Andrei Sukhanov
 # Version 02 2016-08-09 Support for arrays, all stringType converted to 'stringout' records, 
 #                       the rest, by default, are the 'ai' records.
+# Version 03 2016-08-09 default NELM=2000
 
 #''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 #        Parse arguments
@@ -45,7 +46,7 @@ EPICS_MAX_STRING_LENGTH=40 # EPICS has limited field sting length
 echo "# EPICS database is generated on `date`"
 echo "# from live ADO using following command:" 
 echo "#    $0 $1 command"
-echo "# NOTE, the variable-length arrays are transformed to waveform records with NELM=2,"
+echo "# NOTE, the variable-length arrays are transformed to waveform records with NELM=2000,"
 echo "#       the NELM could be manually adjusted in this file." 
 ADONAME=$1
 CMD="adoMetaData -f $ADONAME"
@@ -78,7 +79,7 @@ process_cmd()
        if [ ${WORDS[3]} != "1" ]; then # it is array
          RECTYPE="waveform"; 
          if [ ${WORDS[3]} == "0" ]; then # it is variable length array, not fully supported by EPICS,
-           NELM="2" # fix max length for variable array to 2, this can be changed in the output db file manually
+           NELM="2000" # fix max length for variable array to 2, this can be changed in the output db file manually
            else NELM=${WORDS[3]}
          fi
        fi

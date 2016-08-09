@@ -2,6 +2,7 @@
  * Stripped down version of EPICS' caput.c.
  * Version 02 2016-08-03 by Andrei Sukhanov.
  * Version 03 2016-08-09 Support arrays. mods: caput(), caput_string(), caput_numbers()
+ * Version 04 2016-08-09 The number of transferred values limited to number of elements
  */
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 // the following is for debug version
@@ -112,6 +113,9 @@ int caput(const char* pvname, int isNumeric, int nvalues, const void *values)
         ca_context_destroy();
         return result;
     }
+    int nElements = ca_element_count(pvs[0].ch_id);
+    if(nElements<nvalues) nvalues = nElements;
+    DBGprintf("PV %s[%i] connected to provide %i values\n",pvs[0].name,nElements,nvalues);
     if(isNumeric) dbrType = DBR_DOUBLE;
     else
     {

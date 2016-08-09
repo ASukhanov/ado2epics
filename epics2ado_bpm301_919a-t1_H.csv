@@ -21,8 +21,8 @@
  ,rawBTimestampM,<,rawBTimestampM
  ,rtdlTimestampM,<,rtdlTimestampM
  ,turnCountM,<,turnCountM
-# ,rawAM,<,rawAM
-# ,rawBM,<,rawBM
+ ,rawAM,<,rawAM
+ ,rawBM,<,rawBM
  ,rmsAM,<,rmsAM
  ,rmsBM,<,rmsBM
  ,accumAM,<,accumAM
@@ -151,9 +151,9 @@
  ,goertzelAmpBM,<,goertzelAmpBM
  ,goertzelKM,<,goertzelKM
  ,channelCalM,<,channelCalM
-# ,fftAM,<,fftAM
-# ,fftBM,<,fftBM
-# ,fftRatioM,<,fftRatioM
+ ,fftAM,<,fftAM
+ ,fftBM,<,fftBM
+ ,fftRatioM,<,fftRatioM
  ,spare1S,<,spare1S
  ,spare2S,<,spare2S
  ,spare3S,<,spare3S

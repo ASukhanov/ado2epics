@@ -1,4 +1,8 @@
-# EPICS database is generated using "./ado2epics_db.sh bpm301.919a-t1.H" command
+# EPICS database is generated on Tue Aug  9 13:56:16 EDT 2016
+# from live ADO using following command:
+#    ./ado2epics_db.sh bpm301.919a-t1.H command
+# NOTE, the variable-length arrays are transformed to waveform records with NELM=2,
+#       the NELM could be manually adjusted in this file.
 #}
 record(stringout, "fecName")
 {
@@ -103,13 +107,13 @@ record(ai, "turnCountM")
 record(waveform, "rawAM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"Raw A array")
 }
 record(waveform, "rawBM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"Raw A array")
 }
 record(ai, "rmsAM")
@@ -168,7 +172,7 @@ record(waveform, "tbtPositionM")
 record(waveform, "positionArrayM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"Raw position array")
 }
 record(ai, "posPeakToPeakM")
@@ -189,19 +193,19 @@ record(ai, "positionArrayStdDevM")
 record(waveform, "coherenceM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"coherence for each bunch")
 }
 record(waveform, "bbbPositionM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"position for each bunch")
 }
 record(waveform, "bbbStatusM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"status of position measurement for each ")
 }
 record(ai, "bbbBunchCountM")
@@ -904,37 +908,37 @@ record(ai, "channelCalM")
 record(waveform, "fftAM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"FFT of raw ADC data for A channel")
 }
 record(waveform, "fftBM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"FFT of raw ADC data for B channel")
 }
 record(waveform, "fftRatioM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"Ratio of the two FFT channels")
 }
 record(waveform, "phaseAM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"FFT phase measurement of raw ADC data fo")
 }
 record(waveform, "phaseBM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"FFT phase measurement of raw ADC data fo")
 }
 record(waveform, "phaseDiffM")
 {
     field(FTVL,"DOUBLE")
-    field(NELM,"2")
+    field(NELM,"2000")
     field(DESC,"Difference between phases of the two cha")
 }
 record(stringout, "firstChannelS")
